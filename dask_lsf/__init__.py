@@ -6,3 +6,4 @@ __version__ = '0.1.0'
 
 from dask_lsf.dask_lsf import setuplsfcluster
 from dask_lsf.dask_lsf import setuplsfclient
+from dask_lsf.dask_lsf import get_dashboard_port

@@ -88,3 +88,6 @@ install: clean ## install the package to the active Python's site-packages
 
 bwheel:
 	python3 setup.py bdist_wheel
+
+testp:
+	twine upload --repository testpypi dist/*

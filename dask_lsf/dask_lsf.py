@@ -48,7 +48,7 @@ def setuplsfcluster(queue:str, project_id:str, memory:int, ncores:int, job_extra
     memory = str(memory)+'GB'
     use_stdin = True
     cluster = LSFCluster(
-                queue=queue, project=ptag, memory=memory,
+                queue=queue, project=project_id, memory=memory,
                 use_stdin=use_stdin, processes=processes, walltime=walltime,
                 cores=cores, ncpus=ncpus, death_timeout=death_timeout, nanny=nanny,
                 header_skip=header_skip, job_extra = job_extra

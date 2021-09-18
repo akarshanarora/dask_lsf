@@ -7,9 +7,10 @@ import dask_lsf
 
 
 
-version = dask_lsf.__version__
 with open('README.rst') as readme_file:
     readme = readme_file.read()
+
+version = dask_lsf.__version__
 
 requirements = [
     'dask',

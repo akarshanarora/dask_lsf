@@ -3,3 +3,5 @@
 __author__ = """Akarshan Arora"""
 __email__ = 'akarshanarora@gmail.com'
 __version__ = '0.1.0'
+
+from dask_lsf.dask_lsf import setuplsfcluster

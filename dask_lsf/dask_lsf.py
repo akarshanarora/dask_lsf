@@ -97,8 +97,44 @@ def get_dashboard_port(client:Client) -> None:
 
     return client.scheduler_info()['services']['dashboard']
 
+def launchlsfjobs(cluster:LSFCluster, njob:int)->None:
+    '''
+    Helper function to launch LSF jobs.
 
-def setupsystem(queue:str, project_id:str, memory:int, ncores:int, job_extra:str=None) -> (LSFCluster, Client):
+    Parameters
+    ----------
+    cluster : LSFCluster
+        LSFCluster setup for connecting to LSF jobs
+    njobs : int
+        Number of jobs to scale upto.
+
+    Returns
+    -------
+    None
+    '''
+
+    cluster.scale(jobs=njob)
+
+def waitforworkers(client:Client, n:int)->None:
+    '''
+    Helper function to wait for given number of workers before executing rest of the code.
+
+    Parameters
+    ----------
+    client : Client
+        LSFClient to which LSFCluster it connected.
+    n : int
+        Number of workers to wait before executing rest of the code.
+
+    Returns
+    -------
+    None
+    '''
+
+    client.wait_for_workers(n)
+
+
+def setupsystem(queue:str, project_id:str, memory:int, ncores:int, njobs:int, wait_for_workers:int=None, job_extra:str=None) -> (LSFCluster, Client):
     '''
     Helper function to setup connection to LSF farm using DASK module.
 
@@ -112,18 +148,45 @@ def setupsystem(queue:str, project_id:str, memory:int, ncores:int, job_extra:str
         Memory per core in GB.
     ncores : int
         Number of cores per LSF job.
-    job_extra : str
-        LSF String Override argument.Default -- '-R "select[mem >= memory*1000 ] rusage [mem=mem*1000]"']
+    njobs : int
+        Number of LSF jobs.
+    wait_for_workers : int, default None
+        Number of LSF jobs to run before executing code.
+        By default the code does not wait for any lsf job.
+    job_extra : str, default  '-R "select[mem >= memory*1000 ] rusage [mem=mem*1000]"']
+        LSF String Override argument
 
     Returns
     -------
     cluster : LSFCluster
-    client : Client
+    client  : Client
     '''
 
     # User config
     cluster = setuplsfcluster(queue, project_id, memory, ncores, job_extra)
+    launchlsfjobs(njobs)
     client = setuplsfclient(cluster)
 
+    if not wait_for_jobs: waitforworkers(wait_for_workers)
+
     return cluster, client
+
+def closesystem(cluster:LSFCluster, client:Client)->None:
+    '''
+    Helper function to close cluster and client.
+
+    Parameters
+    ----------
+    cluster : LSFCluster
+        LSFCluser connected to LSF jobs.
+    client : LSFClient
+        LSFClient connected to LSF cluster.
+
+    Returns
+    -------
+    None
+    '''
+
+    cluster.close()
+    client.close()
 

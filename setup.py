@@ -11,7 +11,10 @@ version = dask_lsf.__version__
 with open('README.rst') as readme_file:
     readme = readme_file.read()
 
-requirements = []
+requirements = [
+    'dask',
+    'dask_jobqueue',
+]
 
 test_requirements = [ ]
 

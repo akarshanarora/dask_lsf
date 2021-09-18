@@ -84,7 +84,7 @@ def setuplsfclient(cluster:LSFCluster)->Client:
 def get_dashboard_port(client:Client) -> None:
     '''
     Returns port on which dask dashboard is running.
-    
+
     Parameters
     ----------
     client : Client
@@ -96,4 +96,34 @@ def get_dashboard_port(client:Client) -> None:
     '''
 
     return client.scheduler_info()['services']['dashboard']
-   
+
+
+def setupsystem(queue:str, project_id:str, memory:int, ncores:int, job_extra:str=None) -> (LSFCluster, Client):
+    '''
+    Helper function to setup connection to LSF farm using DASK module.
+
+    Parameters
+    ----------
+    queue : str
+        LSF Queue
+    project_id : str
+        Project ID. Gets passed to -P argument.
+    memory : int
+        Memory per core in GB.
+    ncores : int
+        Number of cores per LSF job.
+    job_extra : str
+        LSF String Override argument.Default -- '-R "select[mem >= memory*1000 ] rusage [mem=mem*1000]"']
+
+    Returns
+    -------
+    cluster : LSFCluster
+    client : Client
+    '''
+
+    # User config
+    cluster = setuplsfcluster(queue, project_id, memory, ncores, job_extra)
+    client = setuplsfclient(cluster)
+
+    return cluster, client
+

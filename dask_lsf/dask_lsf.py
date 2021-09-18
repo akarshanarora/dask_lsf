@@ -164,10 +164,10 @@ def setupsystem(queue:str, project_id:str, memory:int, ncores:int, njobs:int, wa
 
     # User config
     cluster = setuplsfcluster(queue, project_id, memory, ncores, job_extra)
-    launchlsfjobs(njobs)
+    launchlsfjobs(cluster, njobs)
     client = setuplsfclient(cluster)
 
-    if not wait_for_jobs: waitforworkers(wait_for_workers)
+    if wait_for_workers: waitforworkers(wait_for_workers)
 
     return cluster, client
 

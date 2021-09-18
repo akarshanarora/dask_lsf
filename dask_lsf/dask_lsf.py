@@ -1,5 +1,8 @@
 """Main module."""
 
+from dask.distributed import client
+from dask_jobqueue import LSFCluster
+
 def setuplsfcluster(queue:str, project_id:str, memory:int, ncores:int, job_extra:str=None) -> LSFCluster:
     '''
     Helper function to create LSF Client using DASK module.

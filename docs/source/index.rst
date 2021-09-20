@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 dask_lsf documentation!
-====================================
+=======================
 
 **dask_lsf** is a python library that offers  *simple* and *intuitive* APIs to launch lsf jobs from python script.
 APIs are written around `DASK <https://dask.org/>`_
@@ -14,6 +14,7 @@ APIs are written around `DASK <https://dask.org/>`_
    :caption: Contents:
 
    installation
+   dask_lsf
 
 
 

@@ -3,12 +3,17 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to dask_lsf's documentation!
+dask_lsf documentation!
 ====================================
 
+**dask_lsf** is a python library that offers  *simple* and *intuitive* APIs to launch lsf jobs from python script.
+APIs are written around `DASK <https://dask.org/>`_
+
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
+
+   installation
 
 
 

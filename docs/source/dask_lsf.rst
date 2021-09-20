@@ -1,7 +1,7 @@
-dask\_lsf package
-=================
+API
+===
 
-.. automodule:: dask_lsf.dask_lsf
+.. automodule:: dask_lsf
    :members:
    :undoc-members:
    :show-inheritance:

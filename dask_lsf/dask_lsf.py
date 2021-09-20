@@ -1,5 +1,3 @@
-"""Main module."""
-
 from dask.distributed import Client
 from dask_jobqueue import LSFCluster
 

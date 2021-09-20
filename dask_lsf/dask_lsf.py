@@ -1,5 +1,3 @@
-"""Main module."""
-
 from dask.distributed import Client
 from dask_jobqueue import LSFCluster
 
@@ -81,7 +79,7 @@ def setuplsfclient(cluster:LSFCluster)->Client:
 
     return client
 
-def get_dashboard_port(client:Client) -> None:
+def get_dashboard_port(client:Client) -> int:
     '''
     Returns port on which dask dashboard is running.
 

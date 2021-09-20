@@ -2,7 +2,7 @@
 
 __author__ = """Akarshan Arora"""
 __email__ = 'akarshanarora@gmail.com'
-__version__ = '1.0.0'
+__version__ = '1.1.0'
 
 from .dask_lsf import setuplsfcluster
 from .dask_lsf import setuplsfclient

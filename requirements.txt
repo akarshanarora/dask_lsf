@@ -7,7 +7,6 @@ click==8.0.1
 cloudpickle==2.0.0
 dask==2021.9.0
 dask-jobqueue==0.7.3
--e git+git@github.com:akarshanarora/dask_lsf.git@13e2518663441de26b25ead67cb99ab68fb8b1ea#egg=dask_lsf
 distributed==2021.9.0
 docutils==0.17.1
 fsspec==2021.8.1

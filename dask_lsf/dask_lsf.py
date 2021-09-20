@@ -79,7 +79,7 @@ def setuplsfclient(cluster:LSFCluster)->Client:
 
     return client
 
-def get_dashboard_port(client:Client) -> None:
+def get_dashboard_port(client:Client) -> int:
     '''
     Returns port on which dask dashboard is running.
 

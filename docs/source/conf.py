@@ -13,6 +13,7 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../..'))
+import dask_lsf
 
 
 # -- Project information -----------------------------------------------------
@@ -22,7 +23,8 @@ copyright = '2021, Akarshan Arora'
 author = 'Akarshan Arora'
 
 # The full version, including alpha/beta/rc tags
-release = '1.0.0'
+#release = '1.0.0'
+release =  dask_lsf.__version__
 
 
 # -- General configuration ---------------------------------------------------

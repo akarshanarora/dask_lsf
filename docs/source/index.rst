@@ -11,6 +11,7 @@ dask_lsf documentation!
 **dask_lsf** is a python library that offers  *simple* and *intuitive* APIs to launch lsf jobs from python script.
 APIs are written around `DASK <https://dask.org/>`_
 
+
 .. code-block:: pycon
 
     >>> import dask_lsf as dl
@@ -22,6 +23,10 @@ APIs are written around `DASK <https://dask.org/>`_
     >>> njobs = 10
 
     >>> cluster, client = dl.setupsystem(queue,project_id,memory,ncores,njobs)
+
+.. seealso:: `Examples`_ on how to use Dask in a variety of situations after you have successfully linked your code to LSF.
+
+   .. _Examples: https://examples.dask.org/
 
 .. card:: Installation
     :link: installation
